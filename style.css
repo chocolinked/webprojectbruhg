@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: #ffffff;
+  background-color: #0b0b0b;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+
+.navbar {
+  height: 64px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+nav a {
+  color: #e5e5e5;
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 14px;
+  transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+
+.hero {
+  height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 56px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 16px;
+  color: #bdbdbd;
+  margin-bottom: 8px;
+}
+
+.hero p:last-of-type {
+  margin-bottom: 20px;
+}
+
+/* Pink Play Button */
+.play-button {
+  margin-top: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+  position: relative;
+  z-index: 10;
+}
+
+.play-button svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+  margin-left: 3px; /* Slight offset to center the triangle visually */
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+}
+
+.play-button:active {
+  transform: scale(0.95);
+}
+
+/* Charms Container */
+.charms-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Individual Charm Styling */
+.charm {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: float var(--duration, 10s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: 0.8;
+  filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.5));
+  transition: transform 0.3s ease;
+  left: var(--start, 50%);
+  top: -10%;
+}
+
+.charm:hover {
+  transform: scale(1.3) rotate(360deg);
+  opacity: 1;
+  filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.8));
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(calc(100vh + 20px)) translateX(30px) rotate(180deg);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(calc(100vh + 20px)) translateX(-30px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Additional Bounce Animation for Some Charms */
+.charm:nth-child(odd) {
+  animation: floatBounce var(--duration, 10s) ease-in-out infinite;
+}
+
+@keyframes floatBounce {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(25vh) translateX(20px) rotate(90deg) scale(1.2);
+  }
+  50% {
+    transform: translateY(50vh) translateX(-20px) rotate(180deg) scale(1);
+  }
+  75% {
+    transform: translateY(75vh) translateX(15px) rotate(270deg) scale(1.1);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(calc(100vh + 20px)) translateX(-15px) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Sparkle Effect */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.charm:nth-child(3n) {
+  animation: sparkle 2s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Hero Content Z-index */
+.hero {
+  position: relative;
+  z-index: 10;
+}
+
+.navbar {
+  position: relative;
+  z-index: 10;
+}
