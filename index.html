@@ -11,6 +11,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Audio autoplay -->
+  <audio id="tadc-theme" autoplay loop>
+    <source src="TADCtheme.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Cute Asian Character Charms -->
+  <div class="charms-container">
+    <div class="charm" style="--delay: 0s; --duration: 8s; --start: 10%;">🐱</div>
+    <div class="charm" style="--delay: 1s; --duration: 10s; --start: 20%;">🐰</div>
+    <div class="charm" style="--delay: 2s; --duration: 9s; --start: 30%;">🐻</div>
+    <div class="charm" style="--delay: 0.5s; --duration: 11s; --start: 40%;">🦊</div>
+    <div class="charm" style="--delay: 1.5s; --duration: 8.5s; --start: 50%;">🐼</div>
+    <div class="charm" style="--delay: 3s; --duration: 9.5s; --start: 60%;">🎀</div>
+    <div class="charm" style="--delay: 0.8s; --duration: 10.5s; --start: 70%;">⭐</div>
+    <div class="charm" style="--delay: 2.5s; --duration: 8s; --start: 80%;">💖</div>
+    <div class="charm" style="--delay: 1.2s; --duration: 9s; --start: 15%;">🌸</div>
+    <div class="charm" style="--delay: 2.8s; --duration: 10s; --start: 25%;">🍡</div>
+    <div class="charm" style="--delay: 0.3s; --duration: 11.5s; --start: 35%;">🎋</div>
+    <div class="charm" style="--delay: 1.8s; --duration: 9s; --start: 45%;">🦋</div>
+    <div class="charm" style="--delay: 3.2s; --duration: 8.5s; --start: 55%;">🐉</div>
+    <div class="charm" style="--delay: 0.6s; --duration: 10s; --start: 65%;">🎐</div>
+    <div class="charm" style="--delay: 2.2s; --duration: 9.5s; --start: 75%;">🍙</div>
+    <div class="charm" style="--delay: 1.4s; --duration: 8s; --start: 85%;">🎌</div>
+    <div class="charm" style="--delay: 3.5s; --duration: 10.5s; --start: 12%;">💫</div>
+    <div class="charm" style="--delay: 0.9s; --duration: 9s; --start: 22%;">🦄</div>
+    <div class="charm" style="--delay: 2.1s; --duration: 11s; --start: 32%;">🎁</div>
+    <div class="charm" style="--delay: 1.7s; --duration: 8.5s; --start: 42%;">🍥</div>
+  </div>
 
 
   <header class="navbar">
@@ -32,8 +60,27 @@
       <h1>Meoww;>333</h1>
       <p>Unemployed</p>
       <p>@throatgoat on ONLYFANS</p>
+      <button class="play-button" type="button">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 5v14l11-7z" fill="currentColor"/>
+        </svg>
+      </button>
     </div>
   </main>
 
+  <script>
+    // Ensure audio plays on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      const audio = document.getElementById('tadc-theme');
+      audio.volume = 0.5; // Set volume to 50%
+      audio.play().catch(function(error) {
+        // Autoplay might be blocked, so we'll try again on user interaction
+        console.log('Autoplay blocked, waiting for user interaction');
+        document.addEventListener('click', function() {
+          audio.play();
+        }, { once: true });
+      });
+    });
+  </script>
 </body>
 </html>
